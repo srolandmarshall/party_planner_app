@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213012215) do
+ActiveRecord::Schema.define(version: 20180213012435) do
 
   create_table "drinks", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "booze"
   end
 
   create_table "foods", force: :cascade do |t|
