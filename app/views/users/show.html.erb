@@ -1,2 +1,15 @@
 <h1>User Profile</h1>
 <h2><%= @user.name %></h2>
+<h3>Parties Thrown</h3>
+<ul>
+  <% @user.hosted_parties.each do |party| %>
+    <li><%= link_to party.name, party_path(party) %></li>
+  <%end%>
+</ul>
+
+<h3>Parties Attended/Attending</h3>
+<ul>
+  <% @user.attended_parties.each do |party| %>
+    <li><%= link_to party.name, party_path(party) %></li>
+  <%end%>
+</ul>

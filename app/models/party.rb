@@ -12,6 +12,7 @@ class Party < ActiveRecord::Base
 
   def attend(user)
     self.attendees << user
+    self.update
   end
 
 end
