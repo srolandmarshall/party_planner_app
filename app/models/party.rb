@@ -10,6 +10,14 @@ class Party < ActiveRecord::Base
     self.time.strftime("%A, %D, %H:%M%P")
   end
 
+  def self.nonexpired_parties
+    self.where('time > ?', DateTime.now.beginning_of_day)
+  end
+
+  def self.old_parties
+    self.where('time < ?', DateTime.now.beginning_of_day)
+  end
+
   def attend(user)
     self.attendees << user
     self.update
