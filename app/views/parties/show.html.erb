@@ -4,3 +4,10 @@
 
 <h2>Host</h2>
 <h3><%= link_to @host.name, user_path(@host) %></h3>
+
+<h2>Attendees</h2>
+<ul>
+  <% @party.attendees.each do |attendee| %>
+  <li><%= attendee.name %></li>
+  <% end %>
+</ul>

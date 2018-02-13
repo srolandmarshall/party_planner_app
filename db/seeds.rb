@@ -22,4 +22,10 @@ Party.all.each do |party|
     party.host = user
     party.save
   end
+  if party.attendees == []
+    5.times {
+      party.attendees << User.all.sample
+      party.save
+    }
+  end
 end
