@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+10.times{
+  Party.create(name: Faker::Dune.planet, address:
+Faker::Simpsons.location, time: Faker::Time.between(DateTime.now - 1, DateTime.now))
+}
