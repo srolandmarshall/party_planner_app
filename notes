@@ -1,24 +1,44 @@
-party
--- has name
--- has address
--- has time
+party √
+-- has name √
+-- has address √
+-- has time √
 -- has menu (.food)
 -- has drinks
--- has invitees (users)
--- has hosts (admins)
----- hosts can remove food & drink
----- hosts can edit
+-- has attendees (users) √
+-- has hosts (admins) √
 
 
--- people (users)
----- has role
----- has name
----- has email
----- has secure password
+-- people (users) √
+---- has name √
+---- has email √
+---- has secure password √
 ---- has address
--- food (brought by users)
----- has name
----- has category (appetizer, entree, dessert)
--- drinks (brought by users)
----- has kind (beer, soda, liquor, wine, other)
----- has alcohol? (boolean)
+---- has attended parties √
+---- has hosted parties √
+
+-- food (brought by users)√
+---- has name √
+---- has category (appetizer, entree, dessert)√
+
+-- drinks (brought by users)√
+---- has kind (beer, soda, liquor, wine, other)√
+---- has alcohol? (boolean)√
+
+associations
+  user has many parties (either as host or attendee) √
+  party has many foods/drinks
+  food has many users (people that brought that food to party)
+  food has many parties (parties where people brought that food)
+  drink has many users (people that brought that drink to party)
+  drink has many parties (parties where people brought that drink)
+
+authorization
+  hosts can edit menu (add/remove food/drink) of a party
+  hosts can invite users (attendees)
+  users that are not invited cannot view party at any level
+  all users can create food/drink
+  all users can host a party
+
+authentication
+  party should check if current user is the host
+  party should check if current user is invited
