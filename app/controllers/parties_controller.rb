@@ -1,6 +1,7 @@
 class PartiesController < ApplicationController
   def index
-    @parties = Party.all
+    @parties = Party.nonexpired_parties
+    @old_parties = Party.old_parties
   end
 
   def show
