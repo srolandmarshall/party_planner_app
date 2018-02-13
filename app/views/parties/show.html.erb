@@ -1,6 +1,6 @@
 <h1><%= @party.name %></h1>
 <h3><%= @party.address %></h3>
-<h3><%= @party.time %></h3>
+<h3><%= @party.display_time %></h3>
 
 <h2>Host</h2>
-<h3><%= @party.host.name if @party.host %></h3>
+<h3><%= link_to @host.name, user_path(@host) %></h3>
