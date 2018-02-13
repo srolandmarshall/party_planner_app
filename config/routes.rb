@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :hosts
   resources :drinks
   resources :foods
   devise_for :users
