@@ -1,3 +1,19 @@
 party
+-- has name
+-- has address
+-- has menu (.food)
+-- has bar (.drinks)
+-- has invitees (people)
+
+
 -- people (users)
+---- has name
+---- has email
+---- has secure password
+---- has address
 -- food (brought by users)
+---- has name
+---- has category (appetizer, entree, dessert)
+-- drinks (brought by users)
+---- has kind (beer, soda, liquor, wine, other)
+---- has alcohol? (boolean)
