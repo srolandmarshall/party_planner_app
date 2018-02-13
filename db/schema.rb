@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 20180213134658) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "hosts", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "party_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "parties", force: :cascade do |t|
     t.string   "name"
     t.string   "address"

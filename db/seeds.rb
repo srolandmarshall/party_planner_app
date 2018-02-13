@@ -13,7 +13,7 @@ Faker::Simpsons.location, time: Faker::Time.between(DateTime.now - 1, DateTime.n
 }
 
 Party.all.each do |party|
-  if Party.host.nil?
+  if party.host.nil?
     user = User.all.sample
     party.host = user
     party.save
