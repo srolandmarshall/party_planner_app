@@ -3,4 +3,4 @@
 <h3><%= @party.time %></h3>
 
 <h2>Host</h2>
-<h3><%= link_to @party.host, user_path(@party.host) %></h3>
+<h3><%= @party.host.name if @party.host %></h3>
