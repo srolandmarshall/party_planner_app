@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213012435) do
+ActiveRecord::Schema.define(version: 20180213042333) do
 
   create_table "drinks", force: :cascade do |t|
     t.string   "name"
@@ -28,13 +28,29 @@ ActiveRecord::Schema.define(version: 20180213012435) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hosts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "party_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "parties", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "time"
+    t.integer  "host_id"
   end
+
+  create_table "parties_users", id: false, force: :cascade do |t|
+    t.integer "user_id",  null: false
+    t.integer "party_id", null: false
+  end
+
+  add_index "parties_users", ["party_id"], name: "index_parties_users_on_party_id"
+  add_index "parties_users", ["user_id"], name: "index_parties_users_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -49,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180213012435) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "host_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
