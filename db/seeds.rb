@@ -6,7 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-10.times{
-  Party.create(name: Faker::Dune.planet, address:
-Faker::Simpsons.location, time: Faker::Time.between(DateTime.now - 1, DateTime.now))
-}
+# 10.times{
+#   Party.create(name: Faker::Dune.planet, address:
+# Faker::Simpsons.location, time: Faker::Time.between(DateTime.now - 1, DateTime.now))
+#   User.create(name: Faker::Name.name, email: Faker::Internet.email, password: "123456")
+# }
+
+Party.all.each do |party|
+  user = User.all.sample
+  party.host = user
+  party.save
+  user.save
+end
