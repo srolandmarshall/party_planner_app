@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :drinks
+  resources :foods
   devise_for :users
   resources :parties
   # The priority is based upon order of creation: first created -> highest priority.
