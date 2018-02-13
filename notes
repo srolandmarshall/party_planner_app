@@ -1,12 +1,17 @@
 party
 -- has name
 -- has address
+-- has time
 -- has menu (.food)
--- has bar (.drinks)
--- has invitees (people)
+-- has drinks
+-- has invitees (users)
+-- has hosts (admins)
+---- hosts can remove food & drink
+---- hosts can edit
 
 
 -- people (users)
+---- has role
 ---- has name
 ---- has email
 ---- has secure password

@@ -22,5 +22,13 @@ module PartyPlannerApp
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    #to skip assets, scaffolds.css, test framework, helpers, view
+    config.generators do |g|
+      g.template_engine nil #to skip views
+      g.test_framework  nil #to skip test framework
+      g.assets  false
+      g.helper false
+      g.stylesheets false
+    end
   end
 end
