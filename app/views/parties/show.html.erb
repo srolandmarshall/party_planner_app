@@ -11,3 +11,12 @@
   <li><%= attendee.name %></li>
   <% end %>
 </ul>
+
+<h2>Dishes</h2>
+<ul>
+  <% @party.dishes.each do |dish| %>
+    <% dish.foods.each do |food| %>
+    <li><%=food.name%> - <%=dish.user.name%></li>
+    <% end %>
+  <% end %>
+</ul>

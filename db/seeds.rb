@@ -34,7 +34,7 @@ Party.all.each do |party|
   end
 end
 
-Dish.each do |dish|
+Dish.all.each do |dish|
 
   if dish.foods == []
     2.times {
