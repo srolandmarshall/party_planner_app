@@ -23,4 +23,14 @@ class Party < ActiveRecord::Base
     self.update
   end
 
+  def add_food(food)
+    self.foods << food
+    self.update
+  end
+
+  def add_drink(drink)
+    self.drinks << drink
+    self.update
+  end
+
 end
