@@ -14,9 +14,28 @@
 
 <h2>Dishes</h2>
 <ul>
-  <% @party.dishes.each do |dish| %>
-    <% dish.foods.each do |food| %>
-    <li><%=food.name%> - <%=dish.user.name%></li>
-    <% end %>
+  <% if @apps != [] %>
+    <li><h4>Appetizers<h4></li>
+      <ul>
+        <% @apps.each do |dish| %>
+        <li><%= dish.food.name %> - <%= dish.user.name %></li>
+        <%end%>
+      </ul>
+  <% end %>
+  <% if @entrees != [] %>
+  <li><h4>Entrees<h4></li>
+    <ul>
+      <% @entrees.each do |dish| %>
+      <li><%= dish.food.name %> - <%= dish.user.name %></li>
+      <%end%>
+    </ul>
+  <% end %>
+  <% if @desserts != [] %>
+  <li><h4>Desserts<h4></li>
+    <ul>
+      <% @desserts.each do |dish| %>
+      <li><%= dish.food.name %> - <%= dish.user.name %></li>
+      <%end%>
+    </ul>
   <% end %>
 </ul>

@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180214024527) do
+ActiveRecord::Schema.define(version: 20180214035607) do
 
   create_table "dishes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "party_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "food_id"
   end
 
   create_table "drinks", force: :cascade do |t|
