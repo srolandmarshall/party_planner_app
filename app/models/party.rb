@@ -1,9 +1,10 @@
 class Party < ActiveRecord::Base
   has_many :users
-  has_many :foods
   has_many :drinks
   belongs_to :host, class_name: 'User'
   has_and_belongs_to_many :attendees, class_name: 'User'
+  has_many :dishes
+  has_many :foods, through: :dishes
 
 
   def display_time

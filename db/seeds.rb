@@ -13,6 +13,10 @@ Faker::Simpsons.location, time: Faker::Time.between(DateTime.now - 1, DateTime.n
   Food.create(name: Faker::Food.dish, category: "appetizer")
   Food.create(name: Faker::Food.dish, category: "dessert")
   Food.create(name: Faker::Food.dish, category: "entree")
+  Dish.create(
+    party_id: Party.all.sample.id,
+    user_id: User.all.sample.id
+  )
 }
 
 
@@ -28,4 +32,14 @@ Party.all.each do |party|
       party.save
     }
   end
+end
+
+Dish.each do |dish|
+
+  if dish.foods == []
+    2.times {
+      dish.foods << Food.all.sample
+    }
+  end
+
 end
