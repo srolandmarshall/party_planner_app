@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  resources :dishes
+
   resources :drinks
   resources :foods
   devise_for :users
-  resources :users
+  resources :users do
+    resources :dishes, only: [:show, :index, :new, :delete]
+    resources :attended_parties, only: [:show, :index]
+  end
   resources :parties
   root 'parties#index'
   # The priority is based upon order of creation: first created -> highest priority.

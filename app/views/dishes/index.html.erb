@@ -1,0 +1,27 @@
+<H1><%= @user.name %>'s Dishes</h1>
+  <ul>
+    <% if @apps != [] %>
+      <li><h4>Appetizers<h4></li>
+        <ul>
+          <% @apps.each do |dish| %>
+          <li><%= dish.food.name %> - <%= link_to dish.party.name, party_path(dish.party) %></li>
+          <%end%>
+        </ul>
+    <% end %>
+    <% if @entrees != [] %>
+    <li><h4>Entrees<h4></li>
+      <ul>
+        <% @entrees.each do |dish| %>
+        <li><%= dish.food.name %> - <%= link_to dish.party.name, party_path(dish.party) %></li>
+        <%end%>
+      </ul>
+    <% end %>
+    <% if @desserts != [] %>
+    <li><h4>Desserts<h4></li>
+      <ul>
+        <% @desserts.each do |dish| %>
+        <li><%= dish.food.name %> - <%= link_to dish.party.name, party_path(dish.party) %></li>
+        <%end%>
+      </ul>
+    <% end %>
+  </ul>
