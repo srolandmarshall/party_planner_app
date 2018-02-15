@@ -12,11 +12,11 @@ class Party < ActiveRecord::Base
   end
 
   def self.nonexpired_parties
-    self.where('time > ?', DateTime.now.beginning_of_day).order('time ASC')
+    self.where('time >= ?', DateTime.now).order('time ASC')
   end
 
   def self.old_parties
-    self.where('time < ?', DateTime.now.beginning_of_day).order('time DESC')
+    self.where('time < ?', DateTime.now).order('time DESC')
   end
 
   def attend(user)

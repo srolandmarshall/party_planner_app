@@ -6,6 +6,8 @@ class AttendedPartiesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @parties = @user.attended_parties
+    @attended_parties = @user.attended_parties
+    @parties = @attended_parties.nonexpired_parties
+    @old_parties = @attended_parties.old_parties
   end
 end

@@ -7,9 +7,4 @@
   <%end%>
 </ul>
 
-<h3>Parties Attended/Attending</h3>
-<ul>
-  <% @user.attended_parties.each do |party| %>
-    <li><%= link_to party.name, party_path(party) %></li>
-  <%end%>
-</ul>
+<h3><%= link_to "Parties Attended/Attending", user_attended_parties_path(@user)%></h3>
