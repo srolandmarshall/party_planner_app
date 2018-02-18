@@ -21,11 +21,9 @@ class PartiesController < ApplicationController
 
   def create
     @user = current_user
-    @party = Party.new()
+    @party = Party.new(party_params)
     if @party
       pp=params[:party]
-      @party.name = pp[:name]
-      @party.address = pp[:address]
       @party.host = @user
       @party.time = DateTime.civil(pp["time(1i)"].to_i,pp["time(2i)"].to_i,pp["time(3i)"].to_i,pp["time(4i)"].to_i,pp["time(5i)"].to_i)
       @party.save
