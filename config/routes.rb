@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :attended_parties, only: [:show, :index]
   end
   resources :parties
+  post '/parties/new' => 'parties#create'
   devise_scope :user do
     # using login path for registration
     get '/login' => 'registrations#new'

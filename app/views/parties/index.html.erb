@@ -1,4 +1,5 @@
 <h1>Parties!</h1>
+<h4><%= link_to "Host a Party", new_party_path %></h4>
 <h2>Upcoming Parties</h2>
 <% @parties.all.each do |party| %>
   <h2><%= link_to party.name, party_path(party) %></h2>
