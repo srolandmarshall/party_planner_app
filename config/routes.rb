@@ -2,18 +2,23 @@ Rails.application.routes.draw do
 
   resources :drinks
   resources :foods
-  devise_for :users, :controllers => {:omniauth_callbacks => "callbacks", registrations: 'registrations'}
+  devise_for :users, :path => '', :path_names => {
+    :sign_in => "login",
+    :sign_out => "logout",
+    :sign_up => "register"
+  },
+  :controllers => {:omniauth_callbacks => "callbacks", registrations: 'registrations'}
   resources :users do
     resources :dishes, only: [:show, :index, :new, :delete]
     resources :attended_parties, only: [:show, :index]
   end
   resources :parties
-  # devise_scope :user do
-  #   # using login path for registration
-  #   get '/login' => 'registrations#new', :as => :new_user_registration
-  #   post '/signup' => 'registrations#create', :as => :user_registration
-  #   post '/signin' => 'sessions#create', :as => :user_session
-  # end
+  devise_scope :user do
+    # using login path for registration
+    get '/login' => 'registrations#new'
+    post '/signup' => 'registrations#create'
+    post '/signin' => 'sessions#create'
+  end
   root 'parties#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
