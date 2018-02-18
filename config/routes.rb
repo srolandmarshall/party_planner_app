@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get '/login' => 'registrations#new'
     post '/signup' => 'registrations#create'
     post '/signin' => 'sessions#create'
+    get '/logout' => 'sessions#destroy'
   end
   root 'parties#index'
   # The priority is based upon order of creation: first created -> highest priority.
