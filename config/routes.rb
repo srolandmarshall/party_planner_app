@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :drinks
   resources :foods
-  devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
+  devise_for :users, :controllers => {:omniauth_callbacks => "callbacks", registrations: 'registrations'}
   resources :users do
     resources :dishes, only: [:show, :index, :new, :delete]
     resources :attended_parties, only: [:show, :index]
