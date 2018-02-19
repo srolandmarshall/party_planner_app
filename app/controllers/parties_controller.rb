@@ -16,6 +16,8 @@ class PartiesController < ApplicationController
 
   def new
     @user = current_user
+    @users = Array.new(User.all)
+    @users.delete(current_user)
     @party = Party.new
   end
 
@@ -24,6 +26,7 @@ class PartiesController < ApplicationController
     @party = Party.new(party_params)
     if @party
       pp=params[:party]
+      @party.attendees = set_attendees(pp[:attendees])
       @party.host = @user
       @party.time = DateTime.civil(pp["time(1i)"].to_i,pp["time(2i)"].to_i,pp["time(3i)"].to_i,pp["time(4i)"].to_i,pp["time(5i)"].to_i)
       @party.save
@@ -37,8 +40,18 @@ class PartiesController < ApplicationController
 
   private
 
+  def set_attendees(list)
+    attendees = []
+    list.each do |user|
+      if user != ""
+        attendees << User.find(user)
+      end
+    end
+    attendees
+  end
+
   def party_params
-    params.require(:party).permit(:name, :address, :time, :host_id)
+    params.require(:party).permit(:name, :address, :time, :host_id, :attendees)
   end
 
 end

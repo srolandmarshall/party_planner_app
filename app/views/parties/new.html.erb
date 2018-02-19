@@ -15,6 +15,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :attendees %><br>
+    <%= f.collection_check_boxes :attendees, @users, :id, :name do |c| %>
+      <div class="collection-check-box">
+        <%= c.check_box %>
+        <%= c.label %>
+      </div>
+    <%end%>
+  </div>
+
+  <div class="field">
     <%= f.submit "Host" %>
   </div>
 
