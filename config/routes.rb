@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :dishes, only: [:new, :create, :edit, :delete]
   end
   post '/parties/new' => 'parties#create'
+  post '/parties/:id/dishes/new' => 'dishes#create'
   devise_scope :user do
     # using login path for registration
     get '/login' => 'registrations#new'

@@ -13,6 +13,24 @@ class DishesController < ApplicationController
     @dish = Dish.new
   end
 
+  def create
+    @user = current_user
+    @party = Party.find(params[:id])
+    if params[:commit] == "Add Dish"
+      @dish = Dish.create(food_id: params[:food_id], user_id: @user.id, party_id: @party.id)
+      flash[:notice] = "Dish added!"
+      redirect_to party_path(Party.find(params[:id]))
+    elsif params[:commit] == "Create and Add Dish"
+      @food = Food.create(name: params[:food][:name], category: params[:category])
+      @dish = Dish.create(food_id: @food.id, user_id: @user.id, party_id: @party.id)
+      flash[:notice] = "Dish created and Added!"
+      redirect_to party_path(Party.find(params[:id]))
+    else
+      flash[:notice] = "There was some sort of error..."
+      redirect_to new_party_dish_path(@party)
+    end
+  end
+
   private
 
   def dish_params
