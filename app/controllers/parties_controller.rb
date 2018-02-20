@@ -1,7 +1,9 @@
 class PartiesController < ApplicationController
   def index
-    @parties = Party.nonexpired_parties
-    @old_parties = Party.old_parties
+    @hosted_parties = current_user.hosted_parties
+    @attended_parties = current_user.attended_parties
+    @parties = @attended_parties.nonexpired_parties
+    @old_parties = @attended_parties.old_parties
   end
 
   def show
