@@ -8,12 +8,17 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find(params[:id])
-    @host = @party.host
-    @dishes = @party.dishes
-    @foods = @party.foods
-    @desserts = @dishes.desserts
-    @entrees = @dishes.entrees
-    @apps = @dishes.apps
+    if @party.attendees.include?(current_user)
+      @host = @party.host
+      @dishes = @party.dishes
+      @foods = @party.foods
+      @desserts = @dishes.desserts
+      @entrees = @dishes.entrees
+      @apps = @dishes.apps
+    else
+      flash[:notice]="You're not invited to this party"
+      redirect_to root_path
+    end
   end
 
   def new
