@@ -6,4 +6,9 @@ class DishesController < ApplicationController
     @entrees = @dishes.entrees
     @apps = @dishes.apps
   end
+
+  def new
+    @party = Party.find(params[:party_id])
+    @dish = Dish.new
+  end
 end

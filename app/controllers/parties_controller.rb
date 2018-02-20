@@ -8,7 +8,7 @@ class PartiesController < ApplicationController
 
   def show
     @party = Party.find(params[:id])
-    if @party.attendees.include?(current_user)
+    if @party.attendees.include?(current_user) || @party.host == current_user
       @host = @party.host
       @dishes = @party.dishes
       @foods = @party.foods

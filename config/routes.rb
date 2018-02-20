@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   },
   :controllers => {:omniauth_callbacks => "callbacks", registrations: 'registrations'}
   resources :users do
-    resources :dishes, only: [:show, :index, :new, :delete]
+    resources :dishes, only: [:show, :index]
     resources :attended_parties, only: [:show, :index]
   end
-  resources :parties
+  resources :parties do
+    resources :dishes, only: [:new, :edit, :delete]
+  end
   post '/parties/new' => 'parties#create'
   devise_scope :user do
     # using login path for registration
