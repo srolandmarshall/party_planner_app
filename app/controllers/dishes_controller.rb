@@ -9,6 +9,13 @@ class DishesController < ApplicationController
 
   def new
     @party = Party.find(params[:party_id])
+    @foods = Food.all
     @dish = Dish.new
+  end
+
+  private
+
+  def dish_params
+    params.require(:dish).permit(:name, :category)
   end
 end

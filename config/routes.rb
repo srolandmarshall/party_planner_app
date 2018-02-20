@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :attended_parties, only: [:show, :index]
   end
   resources :parties do
-    resources :dishes, only: [:new, :edit, :delete]
+    resources :dishes, only: [:new, :create, :edit, :delete]
   end
   post '/parties/new' => 'parties#create'
   devise_scope :user do
