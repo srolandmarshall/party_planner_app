@@ -1,4 +1,7 @@
 <h1><%= @party.name %></h1>
+<% if @party.host == current_user %>
+  <%= link_to "Edit this Party", edit_party_path(@party) %>
+<%end%>
 <h3><%= @party.address %></h3>
 <h3><%= @party.display_time %></h3>
 
