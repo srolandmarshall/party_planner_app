@@ -24,7 +24,7 @@ class PartiesController < ApplicationController
   def new
     @user = current_user
     @users = Array.new(User.all)
-    @users.delete(current_user)
+    @users.delete(@user)
     @party = Party.new
   end
 
@@ -47,6 +47,9 @@ class PartiesController < ApplicationController
 
   def edit
     @user = current_user
+    @users = Array.new(User.all)
+    @users.delete(@user)
+    @party = Party.find(params[:id])
   end
 
   private

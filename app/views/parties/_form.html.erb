@@ -1,0 +1,30 @@
+<%= form_for @party do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %><br>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.datetime_select :time, order: [:month, :day, :year]%><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :attendees %><br>
+    <%= f.collection_check_boxes :attendees, @users, :id, :name do |c| %>
+      <div class="collection-check-box">
+        <%= c.check_box %>
+        <%= c.label %>
+      </div>
+    <%end%>
+  </div>
+
+  <div class="field">
+    <%= f.submit "Host" %>
+  </div>
+
+<% end %>
