@@ -31,6 +31,17 @@ class DishesController < ApplicationController
     end
   end
 
+  def delete
+  end
+
+  def destroy
+    @party = Party.find(params[:id])
+    @dish = Dish.find(params[:dish_id])
+    @dish.destroy
+    flash[:notice] = "Dish Removed."
+    redirect_to party_path(@party)
+  end
+
   private
 
   def dish_params

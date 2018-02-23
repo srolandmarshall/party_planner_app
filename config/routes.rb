@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
   post '/parties/new' => 'parties#create'
   post '/parties/:id/dishes/new' => 'dishes#create'
+  post '/parties/:id/dishes/delete' => 'dishes#destroy'
   devise_scope :user do
     # using login path for registration
     get '/login' => 'registrations#new'

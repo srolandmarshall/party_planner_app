@@ -12,9 +12,9 @@ class PartiesController < ApplicationController
       @host = @party.host
       @dishes = @party.dishes
       @foods = @party.foods
-      @desserts = @dishes.desserts
-      @entrees = @dishes.entrees
-      @apps = @dishes.apps
+      # @desserts = @dishes.desserts
+      # @entrees = @dishes.entrees
+      # @apps = @dishes.apps
     else
       flash[:notice]="You're not invited to this party"
       redirect_to root_path

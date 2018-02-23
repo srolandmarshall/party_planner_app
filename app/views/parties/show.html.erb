@@ -14,32 +14,6 @@
   <li><%= attendee.name %></li>
   <% end %>
 </ul>
-
 <h2>Dishes</h2>
 <p><%= link_to "Add a New Dish", new_party_dish_path(@party) %></p>
-<ul>
-  <% if @apps != [] %>
-    <li><h4>Appetizers<h4></li>
-      <ul>
-        <% @apps.each do |dish| %>
-        <li><%= dish.food.name %> - <%= dish.user.name %></li>
-        <%end%>
-      </ul>
-  <% end %>
-  <% if @entrees != [] %>
-  <li><h4>Entrees<h4></li>
-    <ul>
-      <% @entrees.each do |dish| %>
-      <li><%= dish.food.name %> - <%= dish.user.name %></li>
-      <%end%>
-    </ul>
-  <% end %>
-  <% if @desserts != [] %>
-  <li><h4>Desserts<h4></li>
-    <ul>
-      <% @desserts.each do |dish| %>
-      <li><%= dish.food.name %> - <%= dish.user.name %></li>
-      <%end%>
-    </ul>
-  <% end %>
-</ul>
+<%= render :partial => "parties/dishes" %>

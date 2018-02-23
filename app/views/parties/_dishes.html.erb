@@ -1,0 +1,38 @@
+<ul>
+  <% if @dishes.apps != [] %>
+    <li><h4>Appetizers<h4></li>
+      <ul>
+        <% @dishes.apps.each do |dish| %>
+        <li><%= display_dish(dish) %>
+          <% if dish.user == current_user %>
+            <%= button_to "Remove Dish" %>
+          <% end %>
+        </li>
+        <%end%>
+      </ul>
+  <% end %>
+  <% if @dishes.entrees != [] %>
+  <li><h4>Entrees<h4></li>
+    <ul>
+      <% @dishes.entrees.each do |dish| %>
+      <li><%= display_dish(dish) %>
+        <% if dish.user == current_user %>
+          <%= button_to "Remove Dish" %>
+        <% end %>
+      </li>
+      <%end%>
+    </ul>
+  <% end %>
+  <% if @dishes.desserts != [] %>
+  <li><h4>Desserts<h4></li>
+    <ul>
+      <% @dishes.desserts.each do |dish| %>
+        <li><%= display_dish(dish) %>
+          <% if dish.user == current_user %>
+            <%= button_to "Remove Dish" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>
