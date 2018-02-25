@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :parties do
     resources :dishes, only: [:new, :create, :edit, :destroy]
   end
+  get '/dishes/most_popular' => 'dishes#most_popular'
   post '/parties/new' => 'parties#create'
   post '/parties/:id/dishes/new' => 'dishes#create'
   delete '/parties/:id/dishes' => 'dishes#destroy'

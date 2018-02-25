@@ -23,4 +23,12 @@ class Dish < ActiveRecord::Base
     group(:food_id).order('count_id DESC').limit(5).count(:id)
   end
 
+  def user_name
+    self.user.name
+  end
+
+  def name
+    self.food.name
+  end
+
 end
