@@ -19,7 +19,7 @@ class Dish < ActiveRecord::Base
     joins(:food).where(foods: {category: "appetizer"})
   end
 
-  def self.most_popular_dishes
+  def self.most_popular
     group(:food_id).order('count_id DESC').limit(5).count(:id)
   end
 
