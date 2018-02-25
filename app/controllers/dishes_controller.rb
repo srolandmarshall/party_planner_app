@@ -42,6 +42,10 @@ class DishesController < ApplicationController
     redirect_to party_path(@party)
   end
 
+  def most_popular
+    @dishes = Dish.most_popular_dishes
+  end
+
   private
 
   def dish_params
