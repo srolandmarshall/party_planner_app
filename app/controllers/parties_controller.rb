@@ -56,6 +56,9 @@ class PartiesController < ApplicationController
   def update
     @party=Party.find(params[:id])
     if @party.update(party_params)
+      pp=params[:party]
+      @party.attendees = set_attendees(pp[:attendees])
+      @party.time = DateTime.civil(pp["time(1i)"].to_i,pp["time(2i)"].to_i,pp["time(3i)"].to_i,pp["time(4i)"].to_i,pp["time(5i)"].to_i)
       flash[:notice] = "Party Updated!"
       redirect_to party_path(@party)
     else
