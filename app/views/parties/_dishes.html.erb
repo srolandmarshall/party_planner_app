@@ -5,7 +5,7 @@
         <% @dishes.apps.each do |dish| %>
         <li><%= display_dish(dish) %>
           <% if dish.user == current_user %>
-            <%= button_to "Remove Dish" %>
+            <%= link_to "Remove Dish", [@party, dish], :method  => :delete %>
           <% end %>
         </li>
         <%end%>
@@ -17,7 +17,7 @@
       <% @dishes.entrees.each do |dish| %>
       <li><%= display_dish(dish) %>
         <% if dish.user == current_user %>
-          <%= button_to "Remove Dish" %>
+          <%= link_to "Remove Dish", [@party, dish], :method  => :delete %>
         <% end %>
       </li>
       <%end%>
@@ -29,7 +29,7 @@
       <% @dishes.desserts.each do |dish| %>
         <li><%= display_dish(dish) %>
           <% if dish.user == current_user %>
-            <%= button_to "Remove Dish" %>
+            <%= link_to "Remove Dish", [@party, dish], :method  => :delete %>
           <% end %>
         </li>
       <% end %>

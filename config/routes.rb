@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     resources :attended_parties, only: [:show, :index]
   end
   resources :parties do
-    resources :dishes, only: [:new, :create, :edit, :delete]
+    resources :dishes, only: [:new, :create, :edit, :destroy]
   end
   post '/parties/new' => 'parties#create'
   post '/parties/:id/dishes/new' => 'dishes#create'
-  post '/parties/:id/dishes/delete' => 'dishes#destroy'
+  delete '/parties/:id/dishes' => 'dishes#destroy'
   devise_scope :user do
     # using login path for registration
     get '/login' => 'registrations#new'
