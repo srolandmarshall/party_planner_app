@@ -3,6 +3,10 @@ class Dish < ActiveRecord::Base
   belongs_to :party
   belongs_to :food
 
+  # checks that user does not bring same food to party more than once
+  # validates :dish_user_food, uniqueness: {scope: [:party_id, :food_id]}
+
+
   def food_category
     self.food.category
   end

@@ -1,4 +1,7 @@
 <h1><%= @party.name %></h1>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 <% if @party.host == current_user %>
   <%= link_to "Edit this Party", edit_party_path(@party) %>
 <%end%>

@@ -21,10 +21,16 @@ class DishesController < ApplicationController
       flash[:notice] = "Dish added!"
       redirect_to party_path(Party.find(params[:id]))
     elsif params[:commit] == "Create and Add Dish"
-      @food = Food.create(name: params[:food][:name], category: params[:category])
-      @dish = Dish.create(food_id: @food.id, user_id: @user.id, party_id: @party.id)
-      flash[:notice] = "Dish created and Added!"
-      redirect_to party_path(Party.find(params[:id]))
+      @food = Food.new(name: params[:food][:name], category: params[:category])
+      if @food.save
+        @dish = Dish.create(food_id: @food.id, user_id: @user.id, party_id: @party.id)
+        flash[:notice] = "Dish created and Added!"
+        redirect_to party_path(Party.find(params[:id]))
+      else
+        @food.valid?
+        flash[:notice] = @food.errors.messages
+        redirect_to new_party_dish_path(@party)
+      end
     else
       flash[:notice] = "There was some sort of error..."
       redirect_to new_party_dish_path(@party)
