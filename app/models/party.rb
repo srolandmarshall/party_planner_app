@@ -6,6 +6,10 @@ class Party < ActiveRecord::Base
   has_many :dishes
   has_many :foods, through: :dishes
 
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :time, :timeliness => {:on_or_after => lambda { Date.current }, :type => :date}
+
 
   def display_time
     self.time.strftime("%A, %D, %H:%M%P")

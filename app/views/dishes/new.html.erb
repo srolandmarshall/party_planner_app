@@ -1,7 +1,5 @@
 <h1>New Dish for <%=link_to @party.name, party_path(@party)%></h1>
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
+
 <h2>Pick from Existing...</h2>
 <%= form_for :dish do |f| %>
   <div class="field">

@@ -31,17 +31,18 @@ class PartiesController < ApplicationController
   def create
     @user = current_user
     @party = Party.new(party_params)
-    if @party
-      pp=params[:party]
-      @party.attendees = set_attendees(pp[:attendees])
-      @party.host = @user
-      @party.time = DateTime.civil(pp["time(1i)"].to_i,pp["time(2i)"].to_i,pp["time(3i)"].to_i,pp["time(4i)"].to_i,pp["time(5i)"].to_i)
-      @party.save
+    pp=params[:party]
+    @party.attendees = set_attendees(pp[:attendees])
+    @party.host = @user
+    @party.time = DateTime.civil(pp["time(1i)"].to_i,pp["time(2i)"].to_i,pp["time(3i)"].to_i,pp["time(4i)"].to_i,pp["time(5i)"].to_i)
+    if @party.save
       flash[:notice] = "Party created"
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
-      flash[:notice] = "Party unable to be created"
-      redirect_to user_path(@user)
+      @party.valid?
+      flash[:notice] = @party.errors.full_messages
+
+      redirect_to new_party_path
     end
   end
 
@@ -50,6 +51,17 @@ class PartiesController < ApplicationController
     @users = Array.new(User.all)
     @users.delete(@user)
     @party = Party.find(params[:id])
+  end
+
+  def update
+    @party=Party.find(params[:id])
+    if @party.update(party_params)
+      flash[:notice] = "Party Updated!"
+      redirect_to party_path(@party)
+    else
+      flash[:notice] = @party.errors.full_messages
+      redirect_to party_path(@party)
+    end
   end
 
   private

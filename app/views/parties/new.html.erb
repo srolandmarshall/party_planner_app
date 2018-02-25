@@ -1,2 +1,6 @@
 <h1>Host a Party</h1>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+<br/>
 <%= render "parties/form" %>
