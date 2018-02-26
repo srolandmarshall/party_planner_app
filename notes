@@ -20,25 +20,26 @@ party √
 ---- has name √
 ---- has category (appetizer, entree, dessert)√
 
--- drinks (brought by users)√
----- has kind (beer, soda, liquor, wine, other)√
----- has alcohol? (boolean)√
+*** REMOVED/FUTURE VERSIONS ***
+-- drinks (brought by users)
+---- has kind (beer, soda, liquor, wine, other)
+---- has alcohol? (boolean)
 
 associations
   user has many parties (either as host or attendee) √
-  party has many foods/drinks
-  food has many users (people that brought that food to party)
-  food has many parties (parties where people brought that food)
-  drink has many users (people that brought that drink to party)
-  drink has many parties (parties where people brought that drink)
+  party has many foods/drinks √ -- no drinks
+  food has many users (people that brought that food to party) -- not in this version
+  food has many parties (parties where people brought that food) -- not in this version
+  drink has many users (people that brought that drink to party) -- not in this version
+  drink has many parties (parties where people brought that drink) -- not in this version
 
 authorization
   hosts can edit menu (add/remove food/drink) of a party
-  hosts can invite users (attendees)
-  users that are not invited cannot view party at any level
-  all users can create food/drink
-  all users can host a party
+  hosts can invite users (attendees) -- yes, but not working ideally.
+  users that are not invited cannot view party at any level √
+  all users can create food/drink √ -- no drinks, must be invited to party
+  all users can host a party √
 
 authentication
-  party should check if current user is the host
-  party should check if current user is invited
+  party should check if current user is the host √
+  party should check if current user is invited √
