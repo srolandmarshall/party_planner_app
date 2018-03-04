@@ -34,7 +34,7 @@ associations
   drink has many parties (parties where people brought that drink) -- not in this version
 
 authorization
-  hosts can edit menu (add/remove food/drink) of a party
+  hosts can edit menu (add/remove food/drink) of a party -- not yet, working on it.
   hosts can invite users (attendees) -- yes, but not working ideally.
   users that are not invited cannot view party at any level √
   all users can create food/drink √ -- no drinks, must be invited to party
