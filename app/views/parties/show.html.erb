@@ -11,7 +11,7 @@
 <h2>Attendees</h2>
 <ul>
   <% @party.attendees.each do |attendee| %>
-  <li><%= attendee.name %></li>
+  <li><%= link_to attendee.name, user_path(attendee) %></li>
   <% end %>
 </ul>
 <h2>Dishes</h2>
