@@ -5,8 +5,8 @@ Welcome to my Rails Party Planner app. In this app you and your friends can crea
 * Download from GitHub
 * `cd` to directory in terminal
 * Enter `bundle install` in terminal to install dependencies/gems
+* Enter "rake db:migrate" to migrate the DB OR enter "rake db:reseed" to begin with dummy data
 * Enter `rails s` to start the app
 * Navigate to `http://localhost:3000` to begin
-
 
 Built on Rails 4.2.10 and Ruby 2.3.1p112
