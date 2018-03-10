@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     :sign_out => "logout",
     :sign_up => "register"
   },
-  :controllers => {:omniauth_callbacks => "callbacks", registrations: 'registrations'}
+  :controllers => {omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations'}
   resources :users do
     resources :dishes, only: [:show, :index]
     resources :attended_parties, only: [:show, :index]
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     post '/signin' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
   end
+
   root 'parties#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
