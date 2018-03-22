@@ -43,3 +43,8 @@ authorization
 authentication
   party should check if current user is the host √
   party should check if current user is invited √
+
+  Contributers guide:
+  -- File an issue and how to submit code changes
+
+  Nested Form for Dish within new party form
