@@ -1,0 +1,28 @@
+<h1>Add a dish</h1>
+<%= form_for :food do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+  </div>
+  <p></p>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= select_tag :category, options_for_select(["appetizer","entree","dessert"]) %><br>
+  </div>
+  <p></p>
+  <div class="field">
+    <%= f.submit "Create and Add Dish"%>
+  </div>
+<% end %>
+<% if !@party.foods.empty? %>
+<h2>Or pick from Existing...</h2>
+<%= form_for :dish do |f| %>
+  <div class="field">
+    <%= select_tag "food_id", options_for_select(@foods.collect{|food| [food.name, food.id]}) %><br>
+  </div>
+  <p></p>
+  <div class="field">
+    <%= f.submit "Add Dish"%>
+  </div>
+<% end %>
+<%end%>

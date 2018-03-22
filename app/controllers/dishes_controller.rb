@@ -37,6 +37,11 @@ class DishesController < ApplicationController
     end
   end
 
+  def show
+    @party = Party.find(params[:id])
+    @dishes = @party.dishes
+  end
+
   def delete
   end
 

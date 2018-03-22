@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/dishes/most_popular' => 'dishes#most_popular'
   post '/parties/new' => 'parties#create'
   post '/parties/:id/dishes/new' => 'dishes#create'
+  get '/parties/:id/dishes' => 'dishes#show'
   delete '/parties/:id/dishes' => 'dishes#destroy'
   devise_scope :user do
     # using login path for registration
